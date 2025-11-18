@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "@clerk/backend": "^2.9.4",
+    "@clerk/clerk-sdk-node": "^4.13.23",
+    "@clerk/express": "^1.7.50",
+    "@clerk/nextjs": "^6.28.1",
+    "axios": "^1.11.0",
+    "axios-retry": "^3.9.1",
+    "body-parser": "^2.2.0",
+    "cloudinary": "^2.7.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "inngest": "^3.45.1",
+    "jose": "^6.0.12",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.17.0",
+    "path": "^0.12.7",
+    "pdfkit": "^0.17.1",
+    "qrcode": "^1.5.4",
+    "razorpay": "^2.9.6",
+    "Router": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
