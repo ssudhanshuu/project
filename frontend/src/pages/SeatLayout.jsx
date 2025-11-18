@@ -9,7 +9,7 @@ export default function SeatLayout() {
   const { isLoaded, isSignedIn, getToken, userId } = useAuth();
   const { id: movieId, date, time } = useParams();
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
 
   const currentTime = time || "";
   const groupRows = [

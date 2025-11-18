@@ -3,7 +3,7 @@ import Title from "./Title";
 import axios from "../../lib/axiosInstance";
 import { toast } from "react-toastify";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
 
 export default function AddShow() {
   const [movies, setMovies] = useState([]);
