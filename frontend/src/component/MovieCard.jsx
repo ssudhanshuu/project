@@ -11,7 +11,7 @@ export default function MovieCard() {
   const [allMovies, setAllMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const { query } = useSearch();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
 
   useEffect(() => {
     const fetchMovies = async () => {
