@@ -27,9 +27,12 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || "https://project-1-ahno.onrender.com" || "http://localhost:3000";
 
-const allowedOrigin = "http://localhost:5173";
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://project-kappa-rust-86.vercel.app"
+];
 app.use(cors({
-  origin: allowedOrigin,
+  origin: allowedOrigins,
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
