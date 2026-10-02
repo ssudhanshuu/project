@@ -29,7 +29,8 @@ const PORT = process.env.PORT || "https://project-1-ahno.onrender.com" || "http:
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://project-kappa-rust-86.vercel.app"
+  "https://project-kappa-rust-86.vercel.app",
+  "https://project-git-main-sudhanshus-projects-51fc09f7.vercel.app"
 ];
 app.use(cors({
   origin: allowedOrigins,
