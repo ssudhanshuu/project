@@ -6,6 +6,11 @@ const showSchema = new mongoose.Schema({
     ref: "Movie",
     required: true
   },
+  theater: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Theater",
+    default: null
+  },
   date: {
     type: Date,
     required: true

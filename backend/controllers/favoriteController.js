@@ -16,7 +16,7 @@ exports.addFavorite = async (req, res) => {
 
     // Find user and update favorites
     const user = await User.findOneAndUpdate(
-      { clerkId: userId },
+      { _id: userId },
       { $addToSet: { favorites: movie._id } }, // prevents duplicates
       { new: true, upsert: true }
     ).populate("favorites");
@@ -36,7 +36,7 @@ exports.removeFavorite = async (req, res) => {
     if (!userId) return res.status(401).json({ success: false, message: "Unauthorized" });
 
     const user = await User.findOneAndUpdate(
-      { clerkId: userId },
+      { _id: userId },
       { $pull: { favorites: movieId } },
       { new: true }
     ).populate("favorites");
@@ -53,7 +53,7 @@ exports.getFavorites = async (req, res) => {
     const userId = req.auth?.userId;
     if (!userId) return res.status(401).json({ success: false, message: "Unauthorized" });
 
-    const user = await User.findOne({ clerkId: userId }).populate("favorites");
+    const user = await User.findOne({ _id: userId }).populate("favorites");
     if (!user) return res.status(404).json({ success: false, message: "User not found" });
 
     res.status(200).json({ success: true, favorites: user.favorites });

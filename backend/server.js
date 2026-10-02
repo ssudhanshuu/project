@@ -15,6 +15,7 @@ const userRoutes = require('./routers/userRouters');
 const seatRoutes = require('./routers/seatRouters');
 const favoriteRoutes = require("./routers/favoriteRoutes");
 const theaterRoutes = require("./routers/theaterRoutes");
+const theaterMovieRoutes = require("./routers/theaterMovieRoutes");
 const paymentRoutes = require('./routers/paymentRoutes');
 
 const { serve } = require("inngest/express");
@@ -48,6 +49,7 @@ app.use("/api/seats", seatRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/user/favorites", favoriteRoutes);
 app.use("/api/admin/theaters", theaterRoutes);
+app.use("/api/theater-movies", theaterMovieRoutes);
 
 // Inngest route
 app.use('/api/inngest', serve({ client: inngest, functions: [syncUserCreation] }));

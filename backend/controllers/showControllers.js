@@ -80,7 +80,7 @@ exports.getShowsByMovieAndDate = async (req, res) => {
 // POST /shows
 exports.createShow = async (req, res) => {
   try {
-    const { movieId, date, timeSlots, price, isActive } = req.body;
+    const { movieId, date, timeSlots, price, isActive, theaterId } = req.body;
 
     // Validation
     if (!movieId || !date || !Array.isArray(timeSlots) || timeSlots.length === 0 || price == null || isActive == null) {
@@ -103,7 +103,8 @@ exports.createShow = async (req, res) => {
       date: normalizedDate,
       timeSlots,
       price,
-      isActive // ✅ Added isActive here
+      isActive,
+      theater: theaterId || null,
     });
 
     await show.save();
@@ -112,6 +113,7 @@ exports.createShow = async (req, res) => {
     res.status(500).json({ message: "Error creating show", error: error.message });
   }
 };
+
 // GET /shows/:id
 exports.getShowById = async (req, res) => {
   try {
@@ -131,12 +133,18 @@ exports.getShowById = async (req, res) => {
 // GET /shows
 exports.getAllShows = async (req, res) => {
   try {
-    const shows = await Show.find()
+    const filter = {};
+    if (req.query.movieId) filter.movie = req.query.movieId;
+    if (req.query.theaterId) filter.theater = req.query.theaterId;
+
+    const shows = await Show.find(filter)
       .populate('movie', 'title poster_Path bannerUrl backdrop_Path vote_average')
+      .populate('theater', 'name location')
       .lean();
 
-    res.status(200).json(shows);
+    res.status(200).json({ shows });
   } catch (error) {
     res.status(500).json({ message: 'Error fetching shows', error: error.message });
   }
 };
+

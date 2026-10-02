@@ -1,17 +1,26 @@
 const express = require('express');
-const { fetchAndSaveMovies, getAllMovies, getMovieById } = require('../controllers/movieController');
-const { clerkMiddleware, requireAuth } = require('@clerk/express'); // ✅ Import Clerk's middleware
-const protectAdmin = require('../middleware/protectAdmin'); // ✅ Import admin protection
+const {
+  fetchAndSaveMovies,
+  getAllMovies,
+  getMovieById,
+  getUpcomingMovies,
+  getNowPlayingMovies,
+  getTrendingMovies
+} = require('../controllers/movieController');
+const protectAdmin = require('../middleware/protectAdmin');
 
 const router = express.Router();
 
+// Admin: Fetch from TMDB and save to DB
+router.get('/fetch', fetchAndSaveMovies);
 
-router.get('/fetch', fetchAndSaveMovies); // ✅ Protected
+// TMDB live endpoints
+router.get('/upcoming', getUpcomingMovies);         // for Home page
+router.get('/now-playing', getNowPlayingMovies);    // for Movies page
+router.get('/trending', getTrendingMovies);          // bonus
 
-
+// DB movies (all saved movies)
 router.get('/', getAllMovies);
-
-
 router.get('/:id', getMovieById);
 
 module.exports = router;
