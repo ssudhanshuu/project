@@ -12,6 +12,7 @@ import Title from "./Title";
 import { useAuth } from "@clerk/clerk-react";
 
 import ForMissingImage from "/ForMissingImage.png";
+import { API_URL } from "../../../lib/apiConfig";
 
 const formatDateTime = (iso) => {
   if (!iso) return "N/A";
@@ -19,7 +20,7 @@ const formatDateTime = (iso) => {
   return d.toLocaleDateString() + " " + d.toLocaleTimeString();
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 export default function Dashboard() {
   const [data, setData] = useState(null);

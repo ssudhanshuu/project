@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 import { StarIcon } from "lucide-react";
 import isoTimeFormat from "../lib/timeFormat";
 import ForMissingImage from "/ForMissingImage.png";
@@ -11,7 +12,7 @@ export default function MovieCard() {
   const [allMovies, setAllMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const { query } = useSearch();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   useEffect(() => {
     const fetchMovies = async () => {

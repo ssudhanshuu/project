@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { StarIcon, CalendarIcon, ChevronRight } from "lucide-react";
+import { API_URL } from "../lib/apiConfig";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 export default function UpcomingMoviesSection() {
   const [movies, setMovies] = useState([]);

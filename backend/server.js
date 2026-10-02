@@ -30,9 +30,11 @@ const PORT = Number(process.env.PORT) || 3000;
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "http://localhost:3000",
   "https://project-kappa-rust-86.vercel.app",
-  "https://project-git-main-sudhanshus-projects-51fc09f7.vercel.app"
-];
+  "https://project-git-main-sudhanshus-projects-51fc09f7.vercel.app",
+  process.env.FRONTEND_URL
+].filter(Boolean);
 
 const corsOptions = {
   origin: (origin, callback) => {

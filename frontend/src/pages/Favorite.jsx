@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@clerk/clerk-react";
 import MovieCard from "../component/MovieCard";
+import { API_URL } from "../lib/apiConfig";
 
 export default function Favorite() {
   const { getToken, isSignedIn } = useAuth();
   const [favorites, setFavorites] = useState([]);
-  const API_URL = import.meta.env.VITE_API_URL;
+  // API_URL imported from apiConfig
 
   useEffect(() => {
     async function fetchFavorites() {

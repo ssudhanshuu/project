@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { dummyDashboardData } from "../../assets/assets";
 import Title from "./Title";
+import { API_URL } from "../../../lib/apiConfig";
 
 // Dummy date format utility
 const dateFormat = (dateString) => {
@@ -18,6 +19,7 @@ const dateFormat = (dateString) => {
 
 export default function Dashbord() {
   const currency = import.meta.env.VITE_CURRENCY || "₹";
+  // API_URL imported from apiConfig
 
   const [dashboardData, setDashboardData] = useState({
     totalBookings: 0,

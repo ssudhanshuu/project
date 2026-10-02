@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import Title from "./Title";
 import axios from "axios";
+import { API_URL } from "../../../lib/apiConfig";
 
 export default function ListShow() {
   const [shows, setShows] = useState([]);
   const [loadingShow, setLoadingShow] = useState(true);
   const [errorShow, setErrorShow] = useState(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   useEffect(() => {
     const fetchShows = async () => {

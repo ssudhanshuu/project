@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { StarIcon, ClockIcon, SearchIcon } from "lucide-react";
 import { useSearch } from "../context/SearchContext";
+import { API_URL } from "../lib/apiConfig";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 export default function NowPlayingMovies() {
   const navigate = useNavigate();

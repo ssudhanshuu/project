@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { API_URL } from "../../../lib/apiConfig";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 function AddUpcomingMovie() {
   const [form, setForm] = useState({

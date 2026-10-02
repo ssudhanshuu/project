@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Title from "./Title";
+import { API_URL } from "../../../lib/apiConfig";
 
 export default function ListBookings() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   useEffect(() => {
     const fetchBookings = async () => {

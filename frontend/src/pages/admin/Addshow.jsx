@@ -3,8 +3,9 @@ import Title from "./Title";
 import axios from "../../lib/axiosInstance";
 import { toast } from "react-toastify";
 import { StarIcon, SearchIcon, ClockIcon } from "lucide-react";
+import { API_URL } from "../../../lib/apiConfig";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 export default function AddShow() {
   const [movies, setMovies] = useState([]);

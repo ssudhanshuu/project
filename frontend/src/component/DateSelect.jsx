@@ -4,11 +4,12 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 
 export default function DateSelect() {
   const navigate = useNavigate();
   const { id: movieId } = useParams();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   const [selected, setSelected] = useState(null);
   const [dateTime, setDateTime] = useState([]);

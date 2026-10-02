@@ -12,8 +12,9 @@ import {
   StarIcon,
 } from "lucide-react";
 import Title from "./Title";
+import { API_URL } from "../../../lib/apiConfig";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 export default function AssignMovieToTheater() {
   const { getToken } = useAuth();
