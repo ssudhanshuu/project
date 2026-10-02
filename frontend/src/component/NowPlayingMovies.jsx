@@ -18,15 +18,22 @@ export default function NowPlayingMovies() {
     const fetchMovies = async () => {
       try {
         // Fetch both TMDB live now-playing AND our saved DB movies in parallel
-        const [tmdbRes, dbRes] = await Promise.all([
+        const [tmdbResult, dbResult] = await Promise.allSettled([
           axios.get(`${API_URL}/api/movies/now-playing`),
           axios.get(`${API_URL}/api/movies`),
         ]);
 
-        setTmdbMovies(tmdbRes.data?.movies || []);
-        setDbMovies(dbRes.data?.movies || []);
-      } catch (err) {
-        console.error("Error fetching movies:", err);
+        if (tmdbResult.status === "fulfilled") {
+          setTmdbMovies(tmdbResult.value.data?.movies || []);
+        } else {
+          console.error("Error fetching now-playing movies:", tmdbResult.reason);
+        }
+
+        if (dbResult.status === "fulfilled") {
+          setDbMovies(dbResult.value.data?.movies || []);
+        } else {
+          console.error("Error fetching saved movies:", dbResult.reason);
+        }
       } finally {
         setLoading(false);
       }
