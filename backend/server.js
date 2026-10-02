@@ -25,7 +25,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-const PORT = process.env.PORT || https://project-1-ahno.onrender.com;
+const PORT = process.env.PORT || "https://project-1-ahno.onrender.com" || "http://localhost:3000";
 
 const allowedOrigin = "http://localhost:5173";
 app.use(cors({
