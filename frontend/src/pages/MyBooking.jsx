@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/clerk-react';
 import axios from 'axios';
+import { API_URL } from '../lib/apiConfig';
 import BlurCircle from '../component/BlurCircle';
 import timeFormat from '../lib/timeFormat';
 import dateFormat from '../lib/dateFormate';
 
 export default function MyBooking() {
   const currency = import.meta.env.VITE_CURRENCY || '₹';
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  // API_URL imported from apiConfig
   const { user } = useUser();
 
   const [bookings, setBookings] = useState([]);

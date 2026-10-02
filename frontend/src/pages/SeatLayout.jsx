@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 import BlurCircle from "../component/BlurCircle";
 import { useAuth } from "@clerk/clerk-react";
 
@@ -9,7 +10,7 @@ export default function SeatLayout() {
   const { isLoaded, isSignedIn, getToken, userId } = useAuth();
   const { id: movieId, date, time } = useParams();
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   const currentTime = time || "";
   const groupRows = [

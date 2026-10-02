@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 import { useNavigate } from "react-router-dom";
 import {
   MapPinIcon,
@@ -11,7 +12,7 @@ import {
   SearchIcon,
 } from "lucide-react";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+// API_URL imported from apiConfig
 
 // ─── Theater Movies Modal / Detail Panel ─────────────────────────────────────
 function TheaterMoviesPanel({ theater, onClose, navigate }) {

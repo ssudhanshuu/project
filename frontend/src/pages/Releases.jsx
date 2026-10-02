@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 import { CalendarIcon, GlobeIcon, Loader2 } from "lucide-react";
 
 export default function Releases() {
@@ -10,7 +11,7 @@ export default function Releases() {
   const [loadingDates, setLoadingDates] = useState(false);
   const [error, setError] = useState(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   // TMDB API Token from user
   const tmdbToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYjgyNDI1NDliOTRkY2QyMDdmODI3ZWU0MWE1ZjFmZSIsIm5iZiI6MTc1Mjk2MDU2NC4zMDgsInN1YiI6IjY4N2MwZTM0MjU2ZTYwYWEzYzUyODg5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yUH7Aw1Sy2Cuw2TcxvMtVirfyvlWF7wXaC7fhpPBU-c";

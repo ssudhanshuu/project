@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 import { useUser, useAuth } from "@clerk/clerk-react";
 import AppContext from "./AppContext";
 
@@ -29,7 +30,7 @@ const AppProvider = ({ children }) => {
   const [myBookings, setMyBookings] = useState([]);
   const [allMovies, setAllMovies] = useState([]);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from ../lib/apiConfig
 
   // Get Authorization Header
   const getAuthHeaders = async () => {

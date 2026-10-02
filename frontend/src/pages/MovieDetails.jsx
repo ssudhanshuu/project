@@ -6,6 +6,7 @@ import ForMissingImage from "/ForMissingImage.png";
 // import useAppContext from "../context/useAppContext"
 import { useSearch } from "../context/SearchContext";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 
 export default function MovieDetails() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function MovieDetails() {
   const [loading, setLoading] = useState(true);
   const { query } = useSearch();
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   useEffect(() => {
     const fetchMovies = async () => {

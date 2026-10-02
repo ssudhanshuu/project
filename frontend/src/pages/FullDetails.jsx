@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../lib/apiConfig";
 
 import BlurCircle from "../component/BlurCircle";
 import { StarIcon, PlayCircleIcon, Heart } from "lucide-react";
@@ -17,7 +18,7 @@ export default function FullDetails() {
   const [error, setError] = useState(null);
   const dateSelectRef = useRef(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
+  // API_URL imported from apiConfig
 
   const toIdString = (raw) => {
     if (!raw) return "";
