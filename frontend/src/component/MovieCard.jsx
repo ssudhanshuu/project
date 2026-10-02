@@ -35,8 +35,8 @@ export default function MovieCard() {
   const filteredMovies = useMemo(() => {
     return query
       ? allMovies.filter((movie) =>
-          movie.title?.toLowerCase().includes(query.toLowerCase())
-        )
+        movie.title?.toLowerCase().includes(query.toLowerCase())
+      )
       : allMovies;
   }, [query, allMovies]);
 
@@ -52,10 +52,10 @@ export default function MovieCard() {
         const imageSrc = item.bannerUrl
           ? `https://image.tmdb.org/t/p/w500${item.bannerUrl}`
           : item.posterUrl
-          ? `https://image.tmdb.org/t/p/w500${item.posterUrl}`
-          : item.backdrop_Path
-          ? `https://image.tmdb.org/t/p/original${item.backdrop_Path}`
-          : ForMissingImage;
+            ? `https://image.tmdb.org/t/p/w500${item.posterUrl}`
+            : item.backdrop_Path
+              ? `https://image.tmdb.org/t/p/original${item.backdrop_Path}`
+              : ForMissingImage;
 
         const key = item._id ?? `${item.title}-${item.releaseDate}`;
 
@@ -76,10 +76,10 @@ export default function MovieCard() {
             <p className="text-gray-600 mt-2 text-sm">
               {item.releaseDate
                 ? new Date(item.releaseDate).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })
                 : "Release Date N/A"}
               {" | "}
               {item.genre?.slice(0, 2).join(", ") || "Genre Unknown"}

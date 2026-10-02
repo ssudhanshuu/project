@@ -31,9 +31,9 @@ import AssignMovieToTheater from "./pages/admin/AssignMovieToTheater";
 import ListUpcomingMovies from "./pages/ListUpcomingMovies";
 import Theaters from "./pages/Theaters";
 import SuccessPage from "./pages/SuccessPage";
-import FailurePage from "./pages/failurePage";
+import FailurePage from "./pages/FailurePage";
 
-import "./app.css";
+import "./App.css";
 
 export default function App() {
   const location = useLocation();
