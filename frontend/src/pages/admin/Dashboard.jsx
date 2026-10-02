@@ -19,7 +19,7 @@ const formatDateTime = (iso) => {
   return d.toLocaleDateString() + " " + d.toLocaleTimeString();
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -94,11 +94,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex min-h-screen mt-15 bg-black text-white">
-      <aside className="w-[12%] min-w-[200px] bg-white text-black">
-      
-      </aside>
-      <main className="flex-1 p-10">
+    <div className="p-10">
         <Title text1="Admin" text2="Dashboard" />
 
         {/* Summary Cards */}
@@ -159,7 +155,6 @@ export default function Dashboard() {
         ) : (
           <p className="text-gray-400">No active shows available.</p>
         )}
-      </main>
     </div>
   );
 }

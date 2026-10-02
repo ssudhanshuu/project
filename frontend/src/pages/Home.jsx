@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import HeroSection from '../component/HeroSection';
-import FeaturedSection from '../component/FeaturedSection';
-import Footer from '../component/Footer';
 import TrailersSection from '../component/TrailersSection';
 import Explore from '../component/Explore';
+import UpcomingMoviesSection from '../component/UpcomingMoviesSection';
 
 function Home() {
   const { pathname } = useLocation();
@@ -18,9 +17,8 @@ function Home() {
     <>
       <HeroSection />
       <Explore />
-      <FeaturedSection />
+      <UpcomingMoviesSection />
       <TrailersSection />
-      <Footer />
     </>
   );
 }

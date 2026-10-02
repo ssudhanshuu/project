@@ -1,6 +1,6 @@
 import React from 'react';
 import { assets } from '../../assets/assets';
-import { Layout, ListCollapseIcon, ListIcon, PlusSquareIcon } from 'lucide-react';
+import { Layout, ListCollapseIcon, ListIcon, PlusSquareIcon, LinkIcon, BuildingIcon } from 'lucide-react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 export default function AdminSidebar() {
@@ -12,15 +12,17 @@ export default function AdminSidebar() {
 
   const adminNavlinks = [
     { name: 'Dashboard', path: '/admin/dashboard', icon: Layout },
-    { name: 'Add Shows', path: '/admin/add-show', icon: PlusSquareIcon },
-    { name: 'List Shows', path: '/admin/list-show', icon: ListIcon },
-    { name: 'List Bookings', path: '/admin/list-bookings', icon: ListCollapseIcon },
+    { name: 'Add Shows', path: '/admin/shows/add', icon: PlusSquareIcon },
+    { name: 'List Shows', path: '/admin/shows', icon: ListIcon },
+    { name: 'List Bookings', path: '/admin/bookings', icon: ListCollapseIcon },
+    { name: 'Add Theater', path: '/admin/add-theaters', icon: BuildingIcon },
+    { name: 'Assign Movies', path: '/admin/assign-movies', icon: LinkIcon },
   ];
 
   const location = useLocation();
 
   return (
-    <div className="h-[calc(100vh-60px)] fixed md:flex flex-col pt-8 max-w-19 md:max-w-50 w-full border-rounded-0 bg-gray-500/20 text-sm">
+    <div className="h-screen fixed top-0 left-0 flex flex-col pt-8 w-[76px] md:w-[200px] bg-[#1a1a24] border-r border-gray-800 text-sm z-50">
       {/* Profile */}
       <img
         className="h-9 md:h-14 w-9 md:w-14 rounded-full ml-5 md:ml-12"

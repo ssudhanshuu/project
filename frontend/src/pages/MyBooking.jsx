@@ -7,7 +7,7 @@ import dateFormat from '../lib/dateFormate';
 
 export default function MyBooking() {
   const currency = import.meta.env.VITE_CURRENCY || '₹';
-  const API_URL = import.meta.env.VITE_API_URL || 'https://project-1-ahno.onrender.com';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
   const { user } = useUser();
 
   const [bookings, setBookings] = useState([]);

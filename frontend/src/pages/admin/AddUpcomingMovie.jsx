@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 function AddUpcomingMovie() {
   const [form, setForm] = useState({
@@ -45,7 +45,7 @@ function AddUpcomingMovie() {
   };
 
   return (
-    <div className="p-6 mt-15 ml-45 bg-gray-600 w-3/7  sm:w-3/6  md:w-3/4 lg:w-5/6  mr-50">
+    <div className="p-6 bg-[#1a1a24] text-white rounded-xl shadow border border-gray-800">
       <h2 className="text-2xl font-bold mb-6">Add Upcoming Movie</h2>
       <form onSubmit={handleSubmit} className="space-y-4 w-full">
         <input

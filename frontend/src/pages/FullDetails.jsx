@@ -17,7 +17,7 @@ export default function FullDetails() {
   const [error, setError] = useState(null);
   const dateSelectRef = useRef(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   const toIdString = (raw) => {
     if (!raw) return "";
@@ -32,8 +32,37 @@ export default function FullDetails() {
 
     const fetchMovie = async () => {
       try {
-        const res = await axios.get(`${API_URL}/api/movies/${id}`);
-        if (!cancelled) setMovie(res.data.movie ?? res.data ?? null);
+        let movieData;
+        if (id.length < 24) {
+          // This is a TMDB ID, fetch from TMDB directly
+          const tmdbToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYjgyNDI1NDliOTRkY2QyMDdmODI3ZWU0MWE1ZjFmZSIsIm5iZiI6MTc1Mjk2MDU2NC4zMDgsInN1YiI6IjY4N2MwZTM0MjU2ZTYwYWEzYzUyODg5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.yUH7Aw1Sy2Cuw2TcxvMtVirfyvlWF7wXaC7fhpPBU-c";
+          const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US&append_to_response=credits`, {
+             headers: { Authorization: `Bearer ${tmdbToken}` }
+          });
+          const data = await res.json();
+          if (data.id) {
+            movieData = {
+                 _id: data.id,
+                 title: data.title,
+                 description: data.overview,
+                 language: data.original_language,
+                 vote_average: data.vote_average,
+                 runtime: data.runtime,
+                 genre: data.genres?.map(g => g.name) || [],
+                 releaseDate: data.release_date,
+                 posterUrl: data.poster_path,
+                 backdrop_Path: data.backdrop_path,
+                 casts: data.credits?.cast?.map(c => c.name) || [],
+            };
+          } else {
+             throw new Error("TMDB Movie not found");
+          }
+        } else {
+          const res = await axios.get(`${API_URL}/api/movies/${id}`);
+          movieData = res.data.movie ?? res.data ?? null;
+        }
+
+        if (!cancelled) setMovie(movieData);
       } catch (err) {
         console.error("Movie lookup failed:", err);
         if (!cancelled) setError("Movie not found or server error.");
@@ -158,7 +187,7 @@ export default function FullDetails() {
       </div>
 
       <div>
-        <DateSelect ref={dateSelectRef} />
+        {isShowAvailable && <DateSelect ref={dateSelectRef} />}
       </div>
 
       <p className="text-lg font-medium mt-20 mb-10">You May Also Like</p>

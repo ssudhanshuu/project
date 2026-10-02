@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://project-1-ahno.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 function ListUpcomingMovies() {
   const [movies, setMovies] = useState([]);
@@ -31,8 +31,8 @@ function ListUpcomingMovies() {
   }, []);
 
   return (
-    <div className="p-6 ml-50 mt-20 bg-gray-600 ">
-      <h2 className="text-2xl bg-gray-600 font-bold mb-6">Upcoming Movies (Admin)</h2>
+    <div className="p-6 bg-[#1a1a24] text-white rounded-xl shadow border border-gray-800">
+      <h2 className="text-2xl font-bold mb-6">Upcoming Movies (Admin)</h2>
       {movies.length === 0 ? (
         <p>No upcoming movies found</p>
       ) : (

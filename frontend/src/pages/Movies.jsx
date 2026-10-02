@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import HeroSection from '../component/HeroSection';
-import MovieDetails from './MovieDetails';
-import Explore from '../component/Explore';
-import Footer from '../component/Footer';
-import FeaturedSection2 from '../component/FeaturedSection2';
+import NowPlayingMovies from '../component/NowPlayingMovies';
 
 export default function Movies() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <HeroSection />
-      <FeaturedSection2 />
-      <MovieDetails />
-      <Footer />
+      <NowPlayingMovies />
     </>
   );
 }
